@@ -35,7 +35,7 @@ export default function Header(props) {
       <ElevationScroll>
         <AppBar position="fixed">
             <Toolbar disableGutters>
-              <img alt="company logo" className={classes.log} src={logo} />
+              <img alt="company logo" className={classes.logo} src={logo} />
             </Toolbar>
         </AppBar>
       </ElevationScroll>
