@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
   },
   tab: {
     fontFamily: "Raleway",
-    textTransform: "none"
+    textTransform: "none",
+    fontWeight: 700
   }
 }));
 
