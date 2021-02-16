@@ -23,7 +23,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Raleway",
     textTransform: "none",
     fontWeight: 700,
-    fontSize: "1rem"
+    fontSize: "1rem",
+    minWidth: 10,
+    marginLeft: "25px"
   }
 }));
 
