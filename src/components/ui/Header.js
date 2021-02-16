@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 'auto'
   },
   tab: {
-    fontFamily: "Raleway"
+    fontFamily: "Raleway",
+    textTransform: "none"
   }
 }));
 
