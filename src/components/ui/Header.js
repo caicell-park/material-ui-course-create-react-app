@@ -1,5 +1,7 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,6 +38,13 @@ export default function Header(props) {
         <AppBar position="fixed">
             <Toolbar disableGutters>
               <img alt="company logo" className={classes.logo} src={logo} />
+              <Tabs>
+                <Tab label="Home" />
+                <Tab label="Services" />
+                <Tab label="The Revoultion" />
+                <Tab label="About Us" />
+                <Tab label="Contact Us" />
+              </Tabs>
             </Toolbar>
         </AppBar>
       </ElevationScroll>
