@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     height: "7em"
+  },
+  tabContainer: {
+    marginLeft: 'auto'
   }
 }));
 
@@ -38,7 +41,7 @@ export default function Header(props) {
         <AppBar position="fixed">
             <Toolbar disableGutters>
               <img alt="company logo" className={classes.logo} src={logo} />
-              <Tabs>
+              <Tabs className={classes.tabContainer}>
                 <Tab label="Home" />
                 <Tab label="Services" />
                 <Tab label="The Revoultion" />
