@@ -1,5 +1,6 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -41,22 +42,25 @@ function ElevationScroll(props) {
 export default function Header(props) {
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <>
       <ElevationScroll>
         <AppBar position="fixed">
-            <Toolbar disableGutters>
-              <img alt="company logo" className={classes.logo} src={logo} />
-              <Tabs className={classes.tabContainer}>
-                <Tab className={classes.tab} label="Home" />
-                <Tab className={classes.tab} label="Services" />
-                <Tab className={classes.tab} label="The Revoultion" />
-                <Tab className={classes.tab} label="About Us" />
-                <Tab className={classes.tab} label="Contact Us" />
-              </Tabs>
-            </Toolbar>
+          <Toolbar disableGutters>
+            <img alt="company logo" className={classes.logo} src={logo} />
+            <Tabs className={classes.tabContainer}>
+              <Tab className={classes.tab} label="Home" />
+              <Tab className={classes.tab} label="Services" />
+              <Tab className={classes.tab} label="The Revoultion" />
+              <Tab className={classes.tab} label="About Us" />
+              <Tab className={classes.tab} label="Contact Us" />
+            </Tabs>
+            <Button>
+              Free Estimate
+            </Button>
+          </Toolbar>
         </AppBar>
       </ElevationScroll>
       <div className={classes.toolbarMargin} />
-    </React.Fragment>    
+    </>    
     );
 }
