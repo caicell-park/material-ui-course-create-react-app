@@ -1,3 +1,7 @@
+# ESLint + VScode
+
+- Follow instruction, https://velog.io/@velopert/eslint-and-prettier-in-react
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
