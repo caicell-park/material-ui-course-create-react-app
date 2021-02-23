@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Tabs from '@material-ui/core/Tabs';
@@ -26,14 +26,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '25px',
   },
   button: {
+    ...theme.typography.estimate,
     borderRadius: '50px',
     marginLeft: '50px',
     marginRight: '20px',
-    fontFamily: 'Pacifico',
-    fontSize: '1rem',
-    textTransform: 'none',
     height: '45px',
-    color: 'white',
   },
 }));
 
@@ -52,13 +49,24 @@ function ElevationScroll(props) {
 export default function Header(props) {
   console.log(props);
   const classes = useStyles();
+  const [value, setValue] = useState(0);
+
+  const handleChange = (e, chosenValue) => {
+    setValue(chosenValue);
+  };
+
   return (
     <>
       <ElevationScroll>
         <AppBar position="fixed">
           <Toolbar disableGutters>
             <img alt="company logo" className={classes.logo} src={logo} />
-            <Tabs className={classes.tabContainer}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              className={classes.tabContainer}
+              indicatorColor="secondary"
+            >
               <Tab className={classes.tab} label="Home" />
               <Tab className={classes.tab} label="Services" />
               <Tab className={classes.tab} label="The Revoultion" />
