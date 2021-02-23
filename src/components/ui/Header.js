@@ -81,6 +81,7 @@ export default function Header(props) {
             <Button
               component={Link}
               to="/"
+              disableRipple
               className={classes.logContainer}
               onClick={() => setValue(0)}
             >
