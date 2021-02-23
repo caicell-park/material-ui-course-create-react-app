@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   },
   logContainer: {
     padding: 0,
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
   tabContainer: {
     marginLeft: 'auto',
