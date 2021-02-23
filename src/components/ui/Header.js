@@ -27,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     borderRadius: '50px',
+    marginLeft: '50px',
+    marginRight: '20px',
+    fontFamily: 'Pacifico',
+    fontSize: '1rem',
+    textTransform: 'none',
+    height: '45px',
+    color: 'white',
   },
 }));
 
