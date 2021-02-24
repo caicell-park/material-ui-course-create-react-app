@@ -67,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
       opacity: 1,
     },
   },
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
   drawerIcon: {
     height: '50px',
     width: '50px',
@@ -76,6 +79,13 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: 'transparent',
     },
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: 'white',
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange,
   },
 }));
 
@@ -244,6 +254,7 @@ export default function Header(props) {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
       >
         <List disablePadding>
           {routes.map((route) => (
@@ -254,9 +265,25 @@ export default function Header(props) {
               component={Link}
               to={route.link}
             >
-              <ListItemText disableTypography>{route.name}</ListItemText>
+              <ListItemText className={classes.drawerItem} disableTypography>
+                {route.name}
+              </ListItemText>
             </ListItem>
           ))}
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            component={Link}
+            to="/estimate"
+          >
+            <ListItemText
+              className={[classes.drawerItem, classes.drawerItemEstimate]}
+              disableTypography
+            >
+              Free estimate
+            </ListItemText>
+          </ListItem>
         </List>
       </SwipeableDrawer>
       <IconButton
