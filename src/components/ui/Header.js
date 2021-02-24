@@ -26,13 +26,13 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     height: '8em',
-    marginBottom: '3em',
-    [theme.breakpoints.down('md')]: {
-      marginBottom: '2em',
-    },
-    [theme.breakpoints.down('xs')]: {
-      marginBottom: '1.25em',
-    },
+    // marginBottom: '3em',
+    // [theme.breakpoints.down('md')]: {
+    //   marginBottom: '2em',
+    // },
+    // [theme.breakpoints.down('xs')]: {
+    //   marginBottom: '1.25em',
+    // },
   },
   logContainer: {
     padding: 0,
