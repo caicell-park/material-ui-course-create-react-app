@@ -89,7 +89,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.orange,
   },
   drawerItemSelected: {
-    opacity: 1,
+    '& .MuiListItemText-root': {
+      opacity: 1,
+    },
+  },
+  appbar: {
+    zIndex: theme.zIndex.modal + 1,
   },
 }));
 
@@ -230,10 +235,12 @@ export default function Header(props) {
         classes={{ paper: classes.menu }}
         MenuListProps={{ onMouseLeave: handleClose }}
         elevation={0}
+        style={{ zIndex: 1302 }}
+        keepMounted
       >
         {menuOptions.map((option, index) => (
           <MenuItem
-            key={option}
+            key={`${option}${index + 0}`}
             component={Link}
             to={option.link}
             classes={{ root: classes.menuItem }}
@@ -261,6 +268,7 @@ export default function Header(props) {
         onOpen={() => setOpenDrawer(true)}
         classes={{ paper: classes.drawer }}
       >
+        <div className={classes.toolbarMargin} />
         <List disablePadding>
           {routes.map((route, index) => (
             <ListItem
@@ -274,15 +282,9 @@ export default function Header(props) {
               component={Link}
               to={route.link}
               selected={value === index}
+              classes={{ selected: classes.drawerItemSelected }}
             >
-              <ListItemText
-                className={
-                  value === index
-                    ? [classes.drawerItem, classes.drawerItemSelected]
-                    : classes.drawerItem
-                }
-                disableTypography
-              >
+              <ListItemText className={classes.drawerItem} disableTypography>
                 {route.name}
               </ListItemText>
             </ListItem>
@@ -296,11 +298,13 @@ export default function Header(props) {
             button
             component={Link}
             to="/estimate"
+            selected={value === 5}
+            classes={{
+              root: classes.drawerItemEstimate,
+              selected: classes.drawerItemSelected,
+            }}
           >
-            <ListItemText
-              className={[classes.drawerItem, classes.drawerItemEstimate]}
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               Free estimate
             </ListItemText>
           </ListItem>
@@ -319,7 +323,7 @@ export default function Header(props) {
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.appbar}>
           <Toolbar disableGutters>
             <Button
               component={Link}
