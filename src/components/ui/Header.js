@@ -176,6 +176,7 @@ export default function Header(props) {
     { name: 'About Us', link: '/about', activeIndex: 3 },
     { name: 'Contact Us', link: '/contact', activeIndex: 4 },
   ];
+
   useEffect(() => {
     [...menuOptions, ...routes].forEach((route) => {
       switch (window.location.pathname) {
@@ -194,7 +195,7 @@ export default function Header(props) {
           break;
       }
     });
-  }, [value, menuOptions, routes]);
+  }, [value, menuOptions, routes, selectedIndex]);
 
   const tabs = (
     <>
@@ -204,9 +205,9 @@ export default function Header(props) {
         className={classes.tabContainer}
         indicatorColor="secondary"
       >
-        {routes.map((route) => (
+        {routes.map((route, index) => (
           <Tab
-            key={route.name}
+            key={`${route}${index + 0}`}
             className={classes.tab}
             component={Link}
             to={route.link}
@@ -268,6 +269,7 @@ export default function Header(props) {
                 setValue(index);
               }}
               divider
+              key={`${route}${route.activeIndex}`}
               button
               component={Link}
               to={route.link}
