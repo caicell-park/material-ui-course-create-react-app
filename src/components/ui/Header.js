@@ -83,9 +83,13 @@ const useStyles = makeStyles((theme) => ({
   drawerItem: {
     ...theme.typography.tab,
     color: 'white',
+    opacity: 0.7,
   },
   drawerItemEstimate: {
     backgroundColor: theme.palette.common.orange,
+  },
+  drawerItemSelected: {
+    opacity: 1,
   },
 }));
 
@@ -257,21 +261,35 @@ export default function Header(props) {
         classes={{ paper: classes.drawer }}
       >
         <List disablePadding>
-          {routes.map((route) => (
+          {routes.map((route, index) => (
             <ListItem
-              onClick={() => setOpenDrawer(false)}
+              onClick={() => {
+                setOpenDrawer(false);
+                setValue(index);
+              }}
               divider
               button
               component={Link}
               to={route.link}
+              selected={value === index}
             >
-              <ListItemText className={classes.drawerItem} disableTypography>
+              <ListItemText
+                className={
+                  value === index
+                    ? [classes.drawerItem, classes.drawerItemSelected]
+                    : classes.drawerItem
+                }
+                disableTypography
+              >
                 {route.name}
               </ListItemText>
             </ListItem>
           ))}
           <ListItem
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(5);
+            }}
             divider
             button
             component={Link}
