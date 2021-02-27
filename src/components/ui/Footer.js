@@ -6,6 +6,9 @@ import Hidden from '@material-ui/core/Hidden';
 import PropTypes from 'prop-types';
 
 import footerAdornment from '../../assets/Footer Adornment.svg';
+import facebook from '../../assets/facebook.svg';
+import twitter from '../../assets/twitter.svg';
+import instagram from '../../assets/instagram.svg';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
@@ -36,6 +39,22 @@ const useStyles = makeStyles((theme) => ({
   },
   gridItem: {
     margin: '3em',
+  },
+  icon: {
+    height: '4em',
+    width: '4em',
+    [theme.breakpoints.down('xs')]: {
+      height: '2.5em',
+      width: '2.5em',
+    },
+  },
+  socialContainer: {
+    position: 'absolute',
+    marginTop: '-6em',
+    right: '1.5em',
+    [theme.breakpoints.down('xs')]: {
+      right: '0.6em',
+    },
   },
 }));
 
@@ -202,6 +221,41 @@ export default function Footer(props) {
         src={footerAdornment}
         className={classes.adornment}
       />
+
+      <Grid
+        container
+        justify="flex-end"
+        className={classes.socialContainer}
+        spacing={2}
+      >
+        <Grid
+          item
+          component="a"
+          href="http://www.facebook.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img alt="facebook log" src={facebook} className={classes.icon} />
+        </Grid>
+        <Grid
+          item
+          component="a"
+          href="http://www.twitter.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img alt="twitter log" src={twitter} className={classes.icon} />
+        </Grid>
+        <Grid
+          item
+          component="a"
+          href="http://www.instagram.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img alt="instagram log" src={instagram} className={classes.icon} />
+        </Grid>
+      </Grid>
     </footer>
   );
 }
