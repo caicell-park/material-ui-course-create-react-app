@@ -45,14 +45,19 @@ export default createMuiTheme({
     h4: {
       fontFamily: 'Raleway',
       fontWeight: 700,
-      fontSize: '1.75em',
+      fontSize: '1.7r5em',
       color: `${blue}`,
       lineHeight: 1.5,
     },
     subtitle1: {
       fontWeight: 300,
-      fontSize: '1.25em',
+      fontSize: '1.25rem',
       color: `${grey}`,
+    },
+    subtitle2: {
+      fontWeight: 300,
+      fontSize: '1.25rem',
+      color: 'white',
     },
     learnButton: {
       borderColor: `${blue}`,
