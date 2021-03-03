@@ -1,6 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
 import Lottie from 'react-lottie';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -124,7 +126,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LandingPage() {
+export default function LandingPage(props) {
+  const { setValue, setSelectedIndex } = props;
   const classes = useStyles();
   const theme = useTheme();
   const matchesXS = useMediaQuery(theme.breakpoints.down('xs'));
@@ -155,12 +158,28 @@ export default function LandingPage() {
               className={classes.buttonContainer}
             >
               <Grid item>
-                <Button className={classes.estimateButton} variant="contained">
+                <Button
+                  className={classes.estimateButton}
+                  variant="contained"
+                  component={Link}
+                  to="/estimate"
+                  onClick={() => {
+                    setValue(5);
+                  }}
+                >
                   Free Estimate
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" className={classes.learnButtonHero}>
+                <Button
+                  variant="outlined"
+                  className={classes.learnButtonHero}
+                  component={Link}
+                  to="/revolution"
+                  onClick={() => {
+                    setValue(2);
+                  }}
+                >
                   <span>Learn More</span>
                   <ButtonArrow
                     width={15}
@@ -199,7 +218,16 @@ export default function LandingPage() {
               Complete digital solutions, from investigation to{' '}
               <span className={classes.specialText}>celebration.</span>
             </Typography>
-            <Button variant="outlined" className={classes.learnButton}>
+            <Button
+              variant="outlined"
+              className={classes.learnButton}
+              component={Link}
+              to="/customsoftware"
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(1);
+              }}
+            >
               <span>Learn More</span>
               <ButtonArrow
                 width={10}
@@ -239,7 +267,16 @@ export default function LandingPage() {
               Integrate your web experience or create a standalone app
               {matchesSM ? null : <br />} with either mobile platform
             </Typography>
-            <Button variant="outlined" className={classes.learnButton}>
+            <Button
+              variant="outlined"
+              className={classes.learnButton}
+              component={Link}
+              to="/mobileapps"
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(2);
+              }}
+            >
               <span>Learn More</span>
               <ButtonArrow
                 width={10}
@@ -279,7 +316,16 @@ export default function LandingPage() {
             <Typography variant="subtitle1">
               Optimized for Search Engines, built for speed.
             </Typography>
-            <Button variant="outlined" className={classes.learnButton}>
+            <Button
+              variant="outlined"
+              className={classes.learnButton}
+              component={Link}
+              to="/websites"
+              onClick={() => {
+                setValue(1);
+                setSelectedIndex(3);
+              }}
+            >
               <span>Learn More</span>
               <ButtonArrow
                 width={10}
@@ -325,6 +371,11 @@ export default function LandingPage() {
                   <Button
                     variant="outlined"
                     className={classes.learnButtonHero}
+                    component={Link}
+                    to="/revolution"
+                    onClick={() => {
+                      setValue(2);
+                    }}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow
@@ -347,6 +398,7 @@ export default function LandingPage() {
           style={{ height: '80em' }}
           direction="row"
           alignItems="center"
+          className={classes.infoBackground}
         >
           <Grid
             item
@@ -356,14 +408,17 @@ export default function LandingPage() {
               textAlign: matchesXS ? 'center' : 'inherit',
             }}
             direction={matchesXS ? 'column' : 'row'}
-            spacing={matchesXS ? 10 : 0}
           >
             <Grid
               item
               sm
               style={{ marginLeft: matchesXS ? 0 : matchesSM ? '2em' : '5em' }}
             >
-              <Grid container direction="column">
+              <Grid
+                container
+                style={{ marginBottom: matchesXS ? '10em' : 0 }}
+                direction="column"
+              >
                 <Typography variant="h2" style={{ color: 'white' }}>
                   About Us
                 </Typography>
@@ -375,6 +430,11 @@ export default function LandingPage() {
                     variant="outlined"
                     className={classes.learnButton}
                     style={{ color: 'white', borderColor: 'white' }}
+                    component={Link}
+                    to="/about"
+                    onClick={() => {
+                      setValue(3);
+                    }}
                   >
                     <span style={{ marginRight: 10 }}>Learn More</span>
                     <ButtonArrow width={10} height={10} fill="white" />
@@ -400,6 +460,11 @@ export default function LandingPage() {
                     variant="outlined"
                     className={classes.learnButton}
                     style={{ color: 'white', borderColor: 'white' }}
+                    component={Link}
+                    to="/contact"
+                    onClick={() => {
+                      setValue(4);
+                    }}
                   >
                     <span>Learn More</span>
                     <ButtonArrow width={10} height={10} fill="white" />
@@ -408,13 +473,17 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <div className={classes.infoBackground} />
         </Grid>
       </Grid>
       <Grid item>
         {/* ----  information Block ----*/}
-        <CallToAction />
+        <CallToAction setValue={setValue} />
       </Grid>
     </Grid>
   );
 }
+
+LandingPage.propTypes = {
+  setValue: PropTypes.func.isRequired,
+  setSelectedIndex: PropTypes.func.isRequired,
+};
