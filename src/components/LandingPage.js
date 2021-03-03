@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -8,12 +8,19 @@ import ButtonArrow from './ui/ButtonArrow';
 
 import animiationData from '../animations/landinganimation/data';
 
-// const useStyles = makeStyles((theme) => ({
-//   mainContainer: {},
-// }));
+// eslint-disable-next-line no-unused-vars
+const useStyles = makeStyles((theme) => ({
+  mainContainer: {},
+  animation: {
+    maxWidth: '50em',
+    minWidth: '21em',
+    marginTop: '2em',
+    marginLeft: '10%',
+  },
+}));
 
 export default function LandingPage() {
-  //   const classes = useStyles();
+  const classes = useStyles();
 
   const defaultOptions = {
     loop: true,
@@ -46,7 +53,7 @@ export default function LandingPage() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid sm item>
+          <Grid sm item className={classes.animation}>
             <Lottie options={defaultOptions} height="100%" width="100%" />
           </Grid>
         </Grid>
