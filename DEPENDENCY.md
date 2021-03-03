@@ -24,3 +24,5 @@ curl https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.j
 # react router
 
 npm install --save react-router-dom
+
+npm install --save react-lottie
