@@ -5,6 +5,7 @@ import Header from './ui/Header';
 import Footer from './ui/Footer';
 import theme from './ui/Theme';
 import LandingPage from './LandingPage';
+import Contact from './Contact';
 
 function App() {
   const [value, setValue] = useState(0);
@@ -50,7 +51,18 @@ function App() {
             component={() => <div>revolution</div>}
           />
           <Route exact path="/about" component={() => <div>about</div>} />
-          <Route exact path="/contact" component={() => <div>contact</div>} />
+          <Route
+            exact
+            path="/contact"
+            render={(props) => (
+              <Contact
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route exact path="/estimate" component={() => <div>estimate</div>} />
         </Switch>
         <Footer
